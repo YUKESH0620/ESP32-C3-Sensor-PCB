@@ -143,7 +143,7 @@ SPI Flash
 | R8 | 470Ω | Charged LED |
 | R9 | 470Ω | Fault LED |
 | R10 | 470Ω | Power LED |
-| R11 | 0Ω | USB VBUS link |
+| R11 | 1kΩ | USB VBUS link |
 | R12 | 22.1kΩ | USB detection |
 | R13 | 47.5kΩ | USB detection |
 | R23 | 10kΩ | LDR voltage divider |
