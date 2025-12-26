@@ -45,15 +45,14 @@ LM1117-3.3 LDO
 │
 +3.3V Rail
 │
-┌------------------┐
-│ ESP32-C3 MCU     │
-└------------------┘
+ESP32-C3 MCU
 │ │ │ │
-│ │ │ ├── Microphone + MAX4466
-│ │ ├── BME280 (I2C)
-│ ├── LDR (ADC)
-├── SD Card (SPI)
-└── SPI Flash
+│ │ │ Microphone + MAX4466
+│ │ BME280 (I2C)
+│ LDR (ADC)
+SD Card (SPI)
+|
+SPI Flash
 ```
 ---
 
