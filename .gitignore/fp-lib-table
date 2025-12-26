@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Esp-32_sensor_Board004_Footprints")(type "KiCad")(uri "${KIPRJMOD}/Footprints")(options "")(descr ""))
+)

@@ -1,0 +1,14 @@
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-F_Cu.gbr'.
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-In1_Cu.gbr'.
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-In2_Cu.gbr'.
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-B_Cu.gbr'.
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-F_Paste.gbr'.
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-B_Paste.gbr'.
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-F_Silkscreen.gbr'.
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-B_Silkscreen.gbr'.
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-F_Mask.gbr'.
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-B_Mask.gbr'.
+Plotted to 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-Edge_Cuts.gbr'.
+Created Gerber job file 'C:\KiCad\ESP-32_C3_Sensor_Board004\ESP-32 C3 demo project004-job.gbrjob'.
+Info: Done.
+Info: Done.
