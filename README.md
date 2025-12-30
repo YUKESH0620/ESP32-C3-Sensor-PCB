@@ -6,9 +6,9 @@ The design integrates **robust power management, multiple sensors, data storage,
 
 ---
 
-## 📷 Board Images
+##  Board Images
 
-### 🔹 Complete Schematic
+###  Complete Schematic
 <img width="1088" height="743" alt="Screenshot 2025-12-26 085358" src="https://github.com/user-attachments/assets/139b2c3f-3f78-4285-b7aa-e1a6b495b93f" />
 
 <img width="1087" height="749" alt="Screenshot 2025-12-26 085602" src="https://github.com/user-attachments/assets/ad2c5c3b-8f81-4bdc-80f2-c4d637b10573" />
@@ -18,10 +18,10 @@ The design integrates **robust power management, multiple sensors, data storage,
 <img width="1084" height="751" alt="Screenshot 2025-12-26 085659" src="https://github.com/user-attachments/assets/84a88581-1efc-4c0e-8398-ec9f2b19b646" />
 
 
-### 🔹 PCB Layout
+###  PCB Layout
 <img width="1919" height="1018" alt="Screenshot 2025-12-26 085844" src="https://github.com/user-attachments/assets/3b8bd616-fbb5-4005-82f5-66c51a86853e" />
 
-### 🔹 3D Views
+###  3D Views
 <img width="1710" height="815" alt="Screenshot 2025-12-26 091250" src="https://github.com/user-attachments/assets/e0156908-8d53-4e83-8612-2a50d07ac91e" />
 
 <img width="1722" height="893" alt="Screenshot 2025-12-26 091325" src="https://github.com/user-attachments/assets/6a486c39-1ce4-4b16-bb1d-7a4ccb0229d6" />
@@ -31,7 +31,7 @@ The design integrates **robust power management, multiple sensors, data storage,
 
 ---
 
-## 🧠 System Architecture
+##  System Architecture
 
 ### Functional Block Diagram
 ```text
@@ -56,31 +56,31 @@ SPI Flash
 ```
 ---
 
-## ✨ Key Features
+##  Key Features
 
-### 🔌 Power & Charging
+###  Power & Charging
 - USB Type-C connector
 - Li-Po charging using **MCP73831**
 - JST battery connector
 - LM1117-3.3 LDO regulator
 - Power status LED
 
-### 🧠 Microcontroller
+###  Microcontroller
 - **ESP32-C3-WROOM-02**
 - RISC-V core
 - Wi-Fi + BLE
 - USB-UART programmable
 
-### 📡 Sensors
+###  Sensors
 - **BME280** – Temperature, humidity, pressure
 - **Electret microphone + MAX4466 amplifier**
 - **LDR photo sensor**
 
-### 💾 Storage
+###  Storage
 - SPI Flash memory (W25Q32)
 - Micro SD card module (SPI)
 
-### 🔄 Programming & Debug
+###  Programming & Debug
 - CP2102N USB-to-UART
 - Auto-programming (DTR/RTS → EN/BOOT)
 - Boot & Reset buttons
@@ -88,7 +88,7 @@ SPI Flash
 
 ---
 
-## ⚙️ Working Principle
+##  Working Principle
 
 ### Power Section
 - USB-C provides 5V
@@ -112,7 +112,7 @@ SPI Flash
 
 ## 🧾 Bill of Materials (Detailed – With Values)
 
-### 🔹 Active Components
+###  Active Components
 
 | Ref | Component | Value / Part |
 |----|----------|-------------|
@@ -129,7 +129,7 @@ SPI Flash
 
 ---
 
-### 🔹 Resistors (From Schematic)
+###  Resistors (From Schematic)
 
 | Ref | Value | Purpose |
 |----|------|--------|
@@ -146,6 +146,7 @@ SPI Flash
 | R11 | 1kΩ | USB VBUS link |
 | R12 | 22.1kΩ | USB detection |
 | R13 | 47.5kΩ | USB detection |
+| R15 | 47k | Biasing resistor |
 | R23 | 10kΩ | LDR voltage divider |
 | R24 | 4.7kΩ | I²C pull-up |
 | R25 | 4.7kΩ | I²C pull-up |
@@ -154,14 +155,14 @@ SPI Flash
 | R28 | 2kΩ | Mic bias |
 | R29 | 1MΩ | Mic amp gain |
 | R30 | 10kΩ | Mic amp |
-| R31 | 100kΩ | Mic feedback |
+| R31 | 2.2kΩ | Mic feedback |
 | R32 | 10kΩ | Reset pull-up |
 | R33 | 10kΩ | DTR control |
 | R34 | 10kΩ | RTS control |
 
 ---
 
-### 🔹 Capacitors (From Schematic)
+###  Capacitors (From Schematic)
 
 | Ref | Value | Purpose |
 |----|------|--------|
@@ -185,7 +186,7 @@ SPI Flash
 
 ---
 
-## 🧪 Design Considerations
+##  Design Considerations
 
 - Ground plane for EMI reduction
 - ESP32 antenna keep-out respected
@@ -196,7 +197,7 @@ SPI Flash
 
 ---
 
-## 🧪 Testing Strategy
+##  Testing Strategy
 
 - Power rail validation
 - USB enumeration
@@ -206,8 +207,80 @@ SPI Flash
 - ADC noise testing (mic & LDR)
 
 ---
+##  Revision History
 
-## 🚀 Applications
+### Rev-A (Initial Prototype)
+- ESP32-C3 based sensor board
+- Microphone connected to GPIO5 (ADC conflict with Wi-Fi)
+- Fixed-gain microphone amplifier
+- Photosensor output taken from incorrect pin
+- No additional EMI filtering on power path
+
+### Rev-B (Improved Design – Current)
+- Resolved ADC conflict between Wi-Fi and microphone
+- Improved analog signal quality
+- Added EMI noise suppression
+- Improved user interface and usability
+---
+
+##  Key Engineering Fixes & Improvements
+
+<img width="7908" height="6917" alt="ESP32 PCB prototype 2 improvements and fixes" src="https://github.com/user-attachments/assets/7826af8e-7f35-4551-935f-63a5d477217a" />
+
+### 1. ADC Conflict Resolution (Wi-Fi vs Microphone)
+- Issue identified during testing: GPIO5 ADC unavailable when Wi-Fi is active
+- Root cause: ADC resource conflict on ESP32-C3
+- Solution:
+  - Microphone OUT moved from GPIO5 → GPIO0 (ADC1)
+  - CS_SD reassigned to GPIO5 as digital output
+- Result: Microphone and Wi-Fi now operate simultaneously without conflict
+
+### 2. Variable Gain Microphone Amplifier
+- Replaced fixed gain network with trimmer potentiometer
+- Gain range adjustable from **25× to 125×**
+- Improves adaptability for different acoustic environments
+
+### 3. Photosensor Signal Correction
+- Output pin corrected from pin 3 → pin 1 as per datasheet
+- Added RC filtering capacitors for noise reduction
+- Result: Stable and accurate ADC readings
+
+### 4. Analog Noise Reduction
+- Added local decoupling capacitor near GPIO0 (MIC_OUT)
+- Reduced high-frequency noise on ADC line
+
+### 5. Improved User Interface
+- Replaced small tact switches with larger buttons
+- Better usability and reliability
+
+### 6. Power Integrity Enhancement
+- Added ferrite bead on charger output
+- Purpose:
+  - Suppress high-frequency switching noise from MCP73871
+  - Reduce EMI affecting analog and RF sections
+
+---
+##  Design Status
+
+- Rev-A: Initial schematic completed and reviewed
+- Design improvements identified during schematic review
+- Rev-B incorporates recommended fixes and optimizations
+- Hardware fabrication and testing are pending
+
+Note: Functional validation will be performed after PCB fabrication.
+
+---
+##  Validation Plan (Post-Fabrication)
+
+- Verify Wi-Fi and microphone operation simultaneously
+- Validate ADC stability for photosensor input
+- Measure microphone gain range
+- Check power rail noise and EMI behavior
+- Confirm battery charging and boost operation
+
+---
+
+##  Applications
 
 - Environmental monitoring
 - IoT data logger
@@ -217,7 +290,7 @@ SPI Flash
 
 ---
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 
 - Fuel gauge IC
 - Enclosure design
